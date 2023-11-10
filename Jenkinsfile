@@ -1,18 +1,18 @@
 pipeline {
     agent any 
     environment {
-    DOCKERHUB_CREDENTIALS = credentials('mmbabu88-dockerhub')
+    DOCKERHUB_CREDENTIALS = credentials('ramdocker611-dockerhub')
     }
     stages { 
         stage('SCM Checkout') {
             steps{
-            git 'https://github.com/mmbabu1988/docker-pipeline.git'
+            git 'https://github.com/RAMDEVOPS23/docker-pipeline.git'
             }
         }
 
         stage('Build docker image') {
             steps {  
-                sh 'docker build -t mmbabu88/nodeapp:$BUILD_NUMBER .'
+                sh 'docker build -t ramdocker611/nodeapp:$BUILD_NUMBER .'
             }
         }
         stage('login to dockerhub') {
@@ -22,7 +22,7 @@ pipeline {
         }
         stage('push image') {
             steps{
-                sh 'docker push mmbabu88/nodeapp:$BUILD_NUMBER'
+                sh 'docker push ramdocker611/nodeapp:$BUILD_NUMBER'
             }
         }
 }
